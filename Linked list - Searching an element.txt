@@ -52,6 +52,8 @@ Sample Output 2
 
 88 not present in the list
 
+
+//using list
 class Node:
     def __init__(self,x):
         self.data=x
@@ -73,6 +75,44 @@ class Linkedlist:
             li.append(temp.data)
             temp=temp.next
         if s in li:
+            print(s,"is present in the list")
+        else:
+            print(s,"not present in the list")
+        
+l=Linkedlist()
+while True:
+    x = int(input())
+    if(x==-1):
+        s=int(input())
+        break
+    else:
+        l.create(x)
+l.search(s)
+
+
+//without using list
+
+class Node:
+    def __init__(self,x):
+        self.data=x
+        self.next=None
+class Linkedlist:
+    def __init__(self):
+        self.tail=self.head=None
+    def create(self,x):
+        n = Node(x)
+        if self.head ==None:
+            self.head=self.tail=n
+        else:
+            self.tail.next= n
+            self.tail=n
+    def search(self,s):
+        temp=self.head
+        while temp.data!=s:
+            temp=temp.next
+            if temp.next==None:
+                break
+        if temp.data==s:
             print(s,"is present in the list")
         else:
             print(s,"not present in the list")
