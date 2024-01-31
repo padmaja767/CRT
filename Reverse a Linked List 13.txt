@@ -1,0 +1,100 @@
+Reverse a Linked List 13
+
+
+Write a program to print the given list in reverse order. Get the input continuously from the user, until the user enters a negative value.
+
+Input Format
+
+Read elements upto -1
+
+Constraints
+
+1<=n<=10^7
+
+Output Format
+
+print output
+
+Sample Input 0
+
+4
+2
+3
+1
+6
+-1
+Sample Output 0
+
+Original Order:
+4 2 3 1 6
+Reverse Order:
+6 1 3 2 4
+Sample Input 1
+
+12
+32
+45
+28
+-1
+Sample Output 1
+
+Original Order:
+12 32 45 28
+Reverse Order:
+28 45 32 12
+Sample Input 2
+
+-1
+Sample Output 2
+
+No value has been inserted
+
+
+
+
+class Node:
+    def __init__(self,x):
+        self.data=x
+        self.next=None
+        self.prev=None
+class Linkedlist:
+    def __init__(self):
+        self.tail=self.head=None
+    def create(self,x):
+        n = Node(x)
+        if self.head ==None:
+            self.head=self.tail=n
+        else:
+            self.tail.next= n
+            n.prev=self.tail
+            self.tail=n
+    def show(self):
+        temp = self.head
+        while temp!=None:
+            print(temp.data,end=" ")
+            temp=temp.next
+    def rev(self):
+        temp1=self.tail
+        while temp1!=None:
+            print(temp1.data,end=" ")
+            temp1=temp1.prev
+            
+l=Linkedlist()
+c=0
+while True:
+    x = int(input())
+    if(x==-1):
+        break
+    else:
+        l.create(x)
+        c=c+1
+if c>0:
+    print("Original Order:")
+    l.show()
+    print()
+    print("Reverse Order:")
+    l.rev()
+else:
+    print("No value has been inserted")
+
+
