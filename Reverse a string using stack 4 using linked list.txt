@@ -1,0 +1,56 @@
+Reverse a string using stack 4
+
+
+
+Write a program to reverse the given string using stack.
+
+Input Format
+
+Read a string
+
+Constraints
+
+string
+
+Output Format
+
+Reverse string using stack
+
+Sample Input 0
+
+python
+Sample Output 0
+
+nohtyp
+Sample Input 1
+
+java
+Sample Output 1
+
+avaj
+
+
+class Node:
+    def __init__(self,x):
+        self.data=x
+        self.next=None
+class Linkedlist:
+    def __init__(self):
+        self.head=None
+    def create(self,x):
+        n = Node(x)
+        if self.head ==None:
+            self.head=n
+        else:
+            n.next=self.head
+            self.head=n
+    def show(self):
+        temp = self.head
+        while temp!=None:
+            print(temp.data,end="")
+            temp=temp.next
+l=Linkedlist()
+s=input()
+for i in s:
+    l.create(i)
+l.show()
