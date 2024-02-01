@@ -1,0 +1,53 @@
+Stack expression evaluation 1
+
+
+
+Write a Program to evaluate the given expression and display the answer.
+
+Input Format
+
+Read postfix notation
+
+Constraints
+
+string
+
+Output Format
+
+Print result after evaluation
+
+Sample Input 0
+
+56+7-
+Sample Output 0
+
+4
+Sample Input 1
+
+567+8-/
+Sample Output 1
+
+1
+
+
+def evaluate(ch,op1,op2):
+    if ch == '+':
+        return op1+op2
+    elif ch == '-':
+        return op1-op2
+    elif ch=='*':
+        return op1*op2
+    elif ch == '/':
+        return op1/op2
+s = input()
+op=[]
+for ch in s:
+    if ch.isalnum():
+        op.append(ch)
+    else:
+        op2=int(op.pop())
+        op1=int(op.pop())
+        res = evaluate(ch,op1,op2)
+        op.append(res)
+print(int(op[-1]))
+    
