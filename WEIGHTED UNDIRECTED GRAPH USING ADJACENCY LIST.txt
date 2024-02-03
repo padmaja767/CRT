@@ -1,0 +1,43 @@
+WEIGHTED UNDIRECTED GRAPH USING ADJACENCY LIST:
+
+def addNode(v):
+    if v in graph:
+        print(v,"is already available")
+    else:
+        graph[v]=[]
+def show():
+    for x in graph:
+        print(x,":",graph[x])
+def addEdge(node1,node2,weight):
+    if node1 not in graph:
+        print(node1,"is not present in graph")
+    elif node2 not in graph:
+        print(node2,"is not present in graph")
+    else:
+        edge=[]
+        edge.append(node2)
+        edge.append(weight)
+        graph[node1].append(edge)
+        edge1=[]
+        edge1.append(node1)
+        edge1.append(weight)
+        graph[node2].append(edge1)
+graph={}
+while True:
+    print()
+    print("1.add node\n2.add edge\n3.print list\n4.exit")
+    ch=int(input("enter your choice"))
+    if ch==1:
+        v=input("enter node")
+        addNode(v)
+    elif ch==2:
+        node1=input("enter node1")
+        node2=input("enter node2")
+        weight=int(input("enter weight"))
+        addEdge(node1,node2,weight)
+    elif ch==3:
+        show()
+    elif ch==4:
+        break
+    else:
+        print("invalid choice")
