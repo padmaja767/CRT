@@ -1,0 +1,44 @@
+DELETING A NODE IN GRAPH(LIST):
+
+def addNode(v):
+    if v in graph:
+        print(v,"is already available")
+    else:
+        graph[v]=[]
+def show():
+    for x in graph:
+        print(x,":",graph[x])
+def deleting(delete):
+    graph.pop(delete)
+    for x in graph.values():
+        x.remove(delete)
+        
+def addEdge(node1,node2):
+    if node1 not in graph:
+        print(node1,"is not present in graph")
+    elif node2 not in graph:
+        print(node2,"is not present in graph")
+    else:
+        graph[node1].append(node2)
+        graph[node2].append(node1)
+graph={}
+while True:
+    print()
+    print("1.add node\n2.add edge\n3.print list\n4.delete\n5.exit\n")
+    ch=int(input("enter your choice"))
+    if ch==1:
+        v=input("enter node")
+        addNode(v)
+    elif ch==2:
+        node1=input("enter node1")
+        node2=input("enter node2")
+        addEdge(node1,node2)
+    elif ch==3:
+        show()
+    elif ch==4:
+        delete=input("enter deleting element")
+        deleting(delete)
+    elif ch==5:
+        break
+    else:
+        print("invalid choice") 
