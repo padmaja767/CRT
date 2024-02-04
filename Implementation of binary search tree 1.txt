@@ -1,0 +1,78 @@
+Implementation of binary search tree 1
+ 
+
+
+Write a program to implement binary search tree.
+
+Input Format
+
+The input should be numbers (until user enters a negative value)
+
+Constraints
+
+1<=n<=10^7
+
+Output Format
+
+The output should be numbers in the list.
+
+Sample Input 0
+
+6
+3
+2
+1
+4
+7
+8
+9
+10
+-1
+Sample Output 0
+
+1 2 3 4 6 7 8 9 10
+Sample Input 1
+
+6
+3
+2
+1
+-1
+Sample Output 1
+
+1 2 3 6
+
+class Node:
+    def __init__(self,x):
+        self.data=x
+        self.left=None
+        self.right=None
+    def insert(self,x):
+        if self.data == None:
+            self.data=x
+            return
+        if self.data>x:
+            if self.left==None:
+                self.left=Node(x)
+            else:
+                self.left.insert(x)
+        else:
+            if self.right ==None:
+                self.right=Node(x)
+            else:
+                self.right.insert(x)
+    def show(self):
+        if self.left:
+            self.left.show()
+        print(self.data,end=" ")
+        if self.right:
+            self.right.show()
+x=int(input())
+root = Node(x)
+while True:
+    x=int(input())
+    if x==-1:
+        break
+    else:
+        root.insert(x)
+root.show()
