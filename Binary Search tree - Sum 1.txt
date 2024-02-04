@@ -1,0 +1,80 @@
+Binary Search tree - Sum 1
+ 
+
+
+Write a program to sum all the elements in the tree.
+
+Input Format
+
+Read elements upto -1
+
+Constraints
+
+1<=n<=10^7
+
+Output Format
+
+print output
+
+Sample Input 0
+
+6
+3
+1
+4
+2
+-1
+Sample Output 0
+
+Sum of all nodes are 16
+Sample Input 1
+
+1
+2
+3
+4
+5
+-1
+Sample Output 1
+
+Sum of all nodes are 15
+
+class Node:
+    def __init__(self,x):
+        self.data=x
+        self.left=None
+        self.right=None
+    def insert(self,x):
+        if self.data == None:
+            self.data=x
+            return
+        if self.data>x:
+            if self.left==None:
+                self.left=Node(x)
+            else:
+                self.left.insert(x)
+        else:
+            if self.right ==None:
+                self.right=Node(x)
+            else:
+                self.right.insert(x)
+    def addition(self):
+        global sum
+        sum+=self.data
+        if self.left:
+            #sum+=self.left.data
+            self.left.addition()
+        if self.right:
+            #sum+=self.right.data
+            self.right.addition()
+x=int(input())
+root = Node(x)
+sum=0
+while True:
+    x=int(input())
+    if x==-1:
+        break
+    else:
+        root.insert(x)
+root.addition()
+print("Sum of all nodes are",sum)
