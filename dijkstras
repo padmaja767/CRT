@@ -1,0 +1,72 @@
+import sys
+def minimum(dist,visited,ver):
+    min_dist = sys.maxsize
+    for i in range(ver):
+        if dist[i]<min_dist and visited[i]==False:
+            min_dist = dist[i]
+            min_index = i
+    return min_index
+def dijktras(start,ver,graph):
+    dist = []
+    dist = [sys.maxsize]*ver
+    dist[start]=0
+    visited = [False]*ver
+
+    for i in range(ver):
+        x = minimum(dist,visited,ver)
+        visited[x] =True
+        for y in range(ver):
+            if graph[x][y] > 0 and visited[y] == False and dist[y] >dist[x]+graph[x][y]:
+                dist[y] = dist[x] + graph[x][y]
+    return dist
+graph = [
+    [0,7,9,0,0,14],
+    [7,0,10,15,0,0],
+    [9,10,0,11,0,2],
+    [0,15,11,0,6,0],
+    [0,0,0,0,6,9],
+    [14,0,2,0,9,0]
+    ]
+ver = len(graph)
+print(dijktras(0,ver,graph))
+
+
+
+# using class concept
+class dijktras:
+  def __init__(self,nodes):
+    # self.ver = ver
+    self.graph = [[0 for col in range(nodes)]for row in range(nodes)]
+  def minimum(self,dist,visited,ver):
+    min_dist = sys.maxsize
+    for i in range(ver):
+        if dist[i]<min_dist and visited[i]==False:
+            min_dist = dist[i]
+            min_index = i
+    return min_index
+  def dijktras(self,start,ver,graph):
+    dist = []
+    dist = [sys.maxsize]*ver
+    dist[start]=0
+    visited = [False]*ver
+    
+    for i in range(ver):
+        x = self.minimum(dist,visited,ver)
+        visited[x] =True
+        for y in range(ver):
+            if graph[x][y] > 0 and visited[y] == False and dist[y] >dist[x]+graph[x][y]: 
+                dist[y] = dist[x] + graph[x][y]
+    return  dist
+obj = dijktras(6)
+obj.graph = [
+    [0,7,9,0,0,14],
+    [7,0,10,15,0,0],
+    [9,10,0,11,0,2],
+    [0,15,11,0,6,0],
+    [0,0,0,0,6,9],
+    [14,0,2,0,9,0]
+    ]
+ver = len(obj.graph)
+print(obj.dijktras(0,ver,graph))
+
+# print(dijktras(0,ver,graph))
